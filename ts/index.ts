@@ -29,6 +29,16 @@ const main = async () => {
         console.log('circuit_bad.json is not OK')
         console.log(e)
     }
+
+    const simpleCircuit = await circom.tester('./circuit_simple.circom')
+    try {
+        const witness = await simpleCircuit.calculateWitness({})
+        await simpleCircuit.checkConstraints(witness)
+        await simpleCircuit.loadSymbols()
+    } catch (e) {
+        console.log('circuit_simple.json is not OK')
+        console.log(e)
+    }
 }
 
 main()

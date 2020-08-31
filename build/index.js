@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var circom = require('circom');
 var libsemaphore = require('libsemaphore');
 var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var leaves, tree, index, leaf, path, circuit, circuitInputs, witness, circuit2, witness_1, e_1;
+    var leaves, tree, index, leaf, path, circuit, circuitInputs, witness, circuit2, witness_1, e_1, simpleCircuit, witness_2, e_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -87,7 +87,28 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
                 console.log('circuit_bad.json is not OK');
                 console.log(e_1);
                 return [3 /*break*/, 12];
-            case 12: return [2 /*return*/];
+            case 12: return [4 /*yield*/, circom.tester('./circuit_simple.circom')];
+            case 13:
+                simpleCircuit = _a.sent();
+                _a.label = 14;
+            case 14:
+                _a.trys.push([14, 18, , 19]);
+                return [4 /*yield*/, simpleCircuit.calculateWitness({})];
+            case 15:
+                witness_2 = _a.sent();
+                return [4 /*yield*/, simpleCircuit.checkConstraints(witness_2)];
+            case 16:
+                _a.sent();
+                return [4 /*yield*/, simpleCircuit.loadSymbols()];
+            case 17:
+                _a.sent();
+                return [3 /*break*/, 19];
+            case 18:
+                e_2 = _a.sent();
+                console.log('circuit_simple.json is not OK');
+                console.log(e_2);
+                return [3 /*break*/, 19];
+            case 19: return [2 /*return*/];
         }
     });
 }); };
