@@ -50,17 +50,20 @@ intermediate signals (`L0`, `L1`, and `L2`) instead.
 ```
 L0 <== 3
 ||
+||
 \\==> S0.in[0]
 0 ==> S0.in[1]
       S0.out[0] ==> A0.left
       S0.out[1] ==> A0.right
 L1 <=============== A0.out
 ||
+||
 \\==> S1.in[0]
 1 ==> S1.in[1]
       S1.out[0] ==> A1.left
       S0.out[1] ==> A1.right
-L2 <== A1.out
+L2 <=============== A1.out
+||
 ||
 \\==> out
 ```
